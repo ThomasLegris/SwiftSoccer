@@ -11,11 +11,12 @@ import Foundation
 class HomeScorersViewModel: BaseViewModel {
     // MARK: - Internal Properties
     @Published var topScorers: [HomeScorersModel] = []
-
+    var selectedLeague: SoccerLeague = .ligue1
+    
     // MARK: - Init
     override init() {
         super.init()
-
+        
         initScorers()
     }
 }
@@ -25,7 +26,7 @@ private extension HomeScorersViewModel {
     /// Inits data source of scorers.
     func initScorers() {
         Task(priority: .medium) {
-            let topScorers = try await apiManager.topScorersRequest(league: .ligue1)
+            let topScorers = try await apiManager.topScorersRequest(league: selectedLeague)
             // When request received (due to await operator), parse it into a array of scorers model.
             DispatchQueue.main.async {
                 let scorers = topScorers.data.map {

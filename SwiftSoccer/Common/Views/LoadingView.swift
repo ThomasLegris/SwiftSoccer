@@ -18,7 +18,7 @@ struct LoadingView: View {
         if shouldShowLoader {
             ProgressView(self.title)
                 .progressViewStyle(CircularProgressViewStyle(tint: .red))
-                .foregroundColor(Color("red60"))
+                .foregroundColor(Color("red50"))
         }
     }
 }

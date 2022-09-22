@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SoccerLeague {
+enum SoccerLeague: String, CaseIterable {
     /// League 1 season.
     case ligue1
     /// League 2 season.
@@ -26,6 +26,11 @@ enum SoccerLeague {
     /// Returns the id of the current season regarding league.
     var seasonId: Int {
         switch self {
+            // FIXME: new seasonId does not work, `standings` tab is empty.
+//        case .ligue1:
+//            return 3188
+//        case .ligue2:
+//            return 3189
         case .ligue1:
             return 2022
         case .ligue2:

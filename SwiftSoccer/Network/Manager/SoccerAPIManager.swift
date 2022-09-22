@@ -17,7 +17,8 @@ final class SoccerAPIManager {
     /// Returns the soccer API Key.
     /// Create one in `https://app.sportdataapi.com/documentation`
     private var apiKey: String {
-        return "YOUR_API_KEY" // Could be stored in info.plist.
+        // return "3ecfef20-a5e1-11ec-9383-4dbcfbf527d5" // Could be stored in info.plist.
+        return "eb0a4b10-3a81-11ed-a6dc-bdf9e032022a"
     }
 
     // MARK: - Init

@@ -9,11 +9,14 @@ import SwiftUI
 import Combine
 
 /// Display list of scorer for a selected league.
-struct HomeScorersView: View, HomePageProtocol {
+struct HomeScorersView: View {
     // MARK: - Internal Properties
-    var pageType: HomePageType
     @ObservedObject var viewModel: HomeScorersViewModel = HomeScorersViewModel()
-
+    
+    init(selectedLeague: SoccerLeague) {
+        self.viewModel.selectedLeague = selectedLeague
+    }
+    
     // MARK: - UI
     var body: some View {
         List {
@@ -33,6 +36,6 @@ struct HomeScorersView: View, HomePageProtocol {
 // MARK: - Preview
 struct HomeScorersView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScorersView(pageType: .scorers)
+        HomeScorersView(selectedLeague: .ligue1)
     }
 }

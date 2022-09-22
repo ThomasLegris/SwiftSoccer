@@ -47,6 +47,8 @@ extension StandingResponse {
         var teamId: Int
         var position: Int
         var points: Int
+        var status: String
+        var result: String?
         var overall: OverallField
 
         enum CodingKeys: String, CodingKey {
@@ -54,6 +56,8 @@ extension StandingResponse {
             case position
             case points
             case overall
+            case status
+            case result
         }
     }
 

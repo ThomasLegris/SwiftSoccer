@@ -9,10 +9,13 @@ import SwiftUI
 import Combine
 
 /// View to display the current season standing.
-struct HomeStandingView: View, HomePageProtocol {
+struct HomeStandingView: View {
     // MARK: - Internal Properties
-    var pageType: HomePageType
-    @ObservedObject var viewModel: HomeStandingViewModel = HomeStandingViewModel()
+    @ObservedObject var viewModel: HomeStandingViewModel
+    
+    init(selectedLeague: SoccerLeague) {
+        viewModel = HomeStandingViewModel(selectedLeague: selectedLeague)
+    }
 
     // MARK: - UI
     var body: some View {
@@ -35,6 +38,6 @@ struct HomeStandingView: View, HomePageProtocol {
 // MARK: - Preview
 struct HomeStandingView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeStandingView(pageType: .standing)
+        HomeStandingView(selectedLeague: .ligue1)
     }
 }

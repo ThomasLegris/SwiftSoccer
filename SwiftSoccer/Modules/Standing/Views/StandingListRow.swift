@@ -18,13 +18,12 @@ struct StandingListRow: View {
             HStack(spacing: 10.0) {
                 Text(model.position)
                     .font(.caption)
-                    .foregroundColor(Color("white80"))
+                    .foregroundColor(model.positionTextColor)
                     .frame(width: 40.0)
                     .background(
                         RoundedRectangle(cornerRadius: 2.0)
                             .frame(width: CommonConstant.padding, height: 48)
-                            .foregroundColor(Color("red60"))
-                        // TODO: Use "has champions league" etc .. for color (model.positionBackgroundColor)
+                            .foregroundColor(model.positionBackgroundColor)
                     )
                 AsyncImage(url: URL(string: model.teamIconName)) { image in
                     image
@@ -37,7 +36,7 @@ struct StandingListRow: View {
                 }
                 .frame(width: 20, height: 20)
                 Text(model.teamName)
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundColor(Color("gray80"))
             }
             Spacer()
@@ -64,6 +63,7 @@ struct RankingListRow_Previews: PreviewProvider {
                                                  position: "3",
                                                  points: "63",
                                                  teamIconName: "https://cdn.sportdataapi.com/images/soccer/teams/100/587.png",
-                                                 goalsInOut: "50:23"))
+                                                 goalsInOut: "50:23",
+                                                 positionTextColor: .white))
     }
 }

@@ -17,7 +17,8 @@ struct StandingListHeader: View {
                                                  points: L10n.standingPoints,
                                                  teamIconName: "",
                                                  goalsInOut: L10n.standingGoalDiff,
-                                                 backgroundColor: Color("white80")))
+                                                 backgroundColor: Color("white80"),
+                                                 positionTextColor: Color("gray80")))
     }
 }
 

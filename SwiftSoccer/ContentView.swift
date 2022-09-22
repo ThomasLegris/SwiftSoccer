@@ -12,17 +12,56 @@ import Alamofire
 /// Initial app content view.
 struct ContentView: View {
     // MARK: - Private Properties
-    @State private var isReachable = NetworkReachabilityManager.default?.isReachable == true
-
+    @State private var isNotReachable = NetworkReachabilityManager.default?.isReachable == false
+    
+    // MARK: - Init
+    init() {
+        // Create a UINavigationBarAppearance object
+        let appearance = UINavigationBarAppearance()
+        // Clear default background color
+        appearance.shadowColor = .none
+        
+        // Issue with default tint.
+        appearance.backgroundColor = Asset.red50.color.withAlphaComponent(0.43)
+        
+        // And use your config object
+        if let font =  UIFont(name: "HelveticaNeue", size: 22) {
+            appearance.titleTextAttributes = [.font: font,
+                                              .foregroundColor: UIColor.white]
+        }
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().barTintColor = Asset.red50.color
+    }
+    
     // MARK: - UI
     var body: some View {
-        HomeView()
-            .alert(isPresented: $isReachable) {
-                Alert(title: Text(L10n.errorNoInternet),
-                      message: Text(L10n.errorNoInternetDescription),
-                      dismissButton: .cancel())
+        NavigationView {
+            VStack {
+                HomeView()
+                    .alert(isPresented: $isNotReachable) {
+                        Alert(title: Text(L10n.errorNoInternet),
+                              message: Text(L10n.errorNoInternetDescription),
+                              dismissButton: .cancel())
+                    }
+                    .foregroundColor(.white)
+                    .navigationTitle(L10n.appTitle)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .font(.title)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                // TODO: Implements `Setting` feature.
+                                print("Pressed Menu")
+                            } label: {
+                                Image(Asset.icMenu.name)
+                                    .resizable()
+                                
+                            }
+                        }
+                    }
             }
-    }
+        }}
 }
 
 // MARK: - Preview
